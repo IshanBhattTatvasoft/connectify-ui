@@ -1,0 +1,36 @@
+// =====================
+// Global Variables
+// =====================
+$primary-color: #f59e0b;
+$light-bg: #fafafa;
+$dark-bg: #1e1e1e;
+$text-color: #111;
+$text-color-dark: #fff;
+
+// =====================
+// Global Styles
+// =====================
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lexend', sans-serif;
+  background-color: $light-bg;
+  color: $text-color;
+  min-height: 100vh;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark {
+  background-color: $dark-bg;
+  color: $text-color-dark;
+}
+
+// Scrollbar Styling (optional)
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: $primary-color;
+  border-radius: 10px;
+}

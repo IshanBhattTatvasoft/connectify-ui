@@ -1,0 +1,115 @@
+$primary-color: #F59E0B; // Connectify Orange
+$background-color: #FAFAFA; // Light Grey/Off-White Background
+$card-color: #FFFFFF; // Pure White Card
+
+.authPage {
+  // Set the overall page background
+  background-color: $background-color;
+  // Center content vertically and horizontally
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.authCard {
+  background-color: $card-color;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); // Subtle shadow
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+
+  .logo {
+    // Styling for the 'C' logo icon
+    background-color: $primary-color;
+    color: $card-color;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+
+  .subtitle {
+    color: #757575;
+    margin-bottom: 25px;
+  }
+
+  .orSeparator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #BDBDBD;
+    margin: 20px 0;
+
+    &::before, &::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid #EEEEEE;
+    }
+
+    &:not(:empty)::before {
+      margin-right: .5em;
+    }
+
+    &:not(:empty)::after {
+      margin-left: .5em;
+    }
+  }
+
+  // Primary action button style
+  .primaryButton {
+    background-color: $primary-color;
+    color: $card-color;
+    text-transform: none; // Keep text case normal
+    font-weight: 600;
+    padding: 10px;
+
+    &:hover {
+      background-color: darken($primary-color, 5%);
+    }
+  }
+
+  // Google button style
+  .googleButton {
+    background-color: $card-color;
+    color: #424242;
+    border: 1px solid #E0E0E0;
+    text-transform: none;
+    font-weight: 500;
+    padding: 10px;
+
+    &:hover {
+      background-color: #F5F5F5;
+    }
+  }
+}
+
+.linkText {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #757575;
+
+  a {
+    color: $primary-color;
+    text-decoration: none;
+    font-weight: 600;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
