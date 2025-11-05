@@ -1,36 +1,82 @@
 // =====================
 // Global Variables
 // =====================
-$primary-color: #f59e0b;
-$light-bg: #fafafa;
-$dark-bg: #1e1e1e;
-$text-color: #111;
-$text-color-dark: #fff;
+
+// Primary purple tones
+$primary-color-dark: #8b5cf6;
+$primary-color-light: #7c3aed;
+
+// Backgrounds
+$dark-bg: #1c1b29;
+$dark-surface: #2a273f;
+
+$light-bg: #f5f3ff;
+$light-surface: #ffffff;
+
+// Text colors
+$text-dark-primary: #ffffff;
+$text-dark-secondary: #a1a1aa;
+
+$text-light-primary: #111111;
+$text-light-secondary: #4b5563;
+
+// Divider colors
+$divider-dark: #3f3f46;
+$divider-light: #e5e7eb;
 
 // =====================
 // Global Styles
 // =====================
+
 html,
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Lexend', sans-serif;
+  font-family: "Lexend", sans-serif;
   background-color: $light-bg;
-  color: $text-color;
+  color: $text-light-primary;
   min-height: 100vh;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+// ===== DARK MODE =====
 .dark {
   background-color: $dark-bg;
-  color: $text-color-dark;
+  color: $text-dark-primary;
+
+  a {
+    color: $primary-color-dark;
+  }
+
+  button {
+    color: $text-dark-primary;
+    background: linear-gradient(135deg, #7c3aed, #8b5cf6);
+  }
+
+  .MuiPaper-root {
+    background-color: $dark-surface !important;
+  }
 }
 
-// Scrollbar Styling (optional)
+// ===== LIGHT MODE =====
+html:not(.dark) {
+  background-color: $light-bg;
+  color: $text-light-primary;
+
+  a {
+    color: $primary-color-light;
+  }
+
+  .MuiPaper-root {
+    background-color: $light-surface !important;
+  }
+}
+
+// ===== Scrollbar Styling =====
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: $primary-color;
+  background-color: $primary-color-dark;
   border-radius: 10px;
 }

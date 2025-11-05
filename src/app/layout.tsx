@@ -1,7 +1,7 @@
 import "./globals.scss";
+import "../index.scss";
 import type { Metadata } from "next";
 import { Lexend } from "next/font/google";
-import LayoutWrapper from "./layout-wrapper";
 import Providers from "./Provider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -27,7 +27,7 @@ export default function RootLayout({
     <html lang="en" className={lexend.variable}>
       <body className={lexend.className}>
         <Providers>
-          <LayoutWrapper>{children}</LayoutWrapper>
+          {children}
           <ToastContainer position="bottom-right" />
         </Providers>
       </body>
