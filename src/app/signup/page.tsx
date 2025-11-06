@@ -26,13 +26,13 @@ export default function Login() {
 
       <Box className="signup-form">
         <Typography variant="h4" className="form-title">
-          Login to your account
+          Create an account
         </Typography>
 
         <Typography variant="body2" className="form-subtitle">
-          Don't have an account?{" "}
-          <Link href="/signup" className="login-link">
-            Create One!
+          Already have an account?{" "}
+          <Link href="/login" className="login-link">
+            Login here
           </Link>
         </Typography>
 
@@ -45,13 +45,20 @@ export default function Login() {
             type="password"
             fullWidth
           />
+          <Textbox
+            id="confirm-password"
+            name="confirm-password"
+            label="Confirm Password"
+            type="confirm-password"
+            fullWidth
+          />
 
           <Button variant="contained" fullWidth className="create-btn">
-            Login
+            Sign Up
           </Button>
 
           <Typography align="center" className="divider">
-            or sign-in with
+            or sign-up with
           </Typography>
 
           <Box className="social-buttons">

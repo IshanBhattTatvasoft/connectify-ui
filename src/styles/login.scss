@@ -64,7 +64,7 @@
 
   .form-title {
     font-weight: 700;
-    font-size: 2rem;    
+    font-size: 2rem;
   }
 
   .form-subtitle {
@@ -114,7 +114,7 @@
       &::before,
       &::after {
         flex: 1;
-        content: '';
+        content: "";
         padding: 3px;
         background-color: #3f3f46;
         height: 1px !important;
@@ -137,10 +137,78 @@
         font-weight: 500;
 
         &:hover {
-          background: rgba(124, 58, 237, 0.15);
+          background: white;
+          color: black;
           border-color: #7c3aed;
         }
       }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .signup-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;   /* keep top-aligned */
+    height: 100vh;
+    gap: 10rem;                     /* NEW: small gap between hero & form */
+  }
+
+  /* ---------- HERO ---------- */
+  .signup-hero {
+    flex: none;                    /* don’t stretch */
+    height: auto;                  /* let content decide height */
+    padding: 0;
+    background: none;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;       /* center vertically inside its area */
+    margin-bottom: 0;              /* no extra margin */
+
+    &::after { display: none; }
+
+    .hero-header,
+    .hero-footer { position: static; }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0.5rem 0 0.25rem 0;
+    }
+
+    .hero-text {
+      font-size: 1.05rem;
+      font-weight: 500;
+      margin: 0;
+      line-height: 1.4;
+    }
+  }
+
+  /* ---------- FORM ---------- */
+  .signup-form {
+    flex: none;
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    border-radius: 1.5rem;
+    box-shadow: none;
+    background: #1c1b29;
+
+    .form-title {
+      font-size: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-subtitle {
+      margin-bottom: 1.5rem;
+      font-size: 0.875rem;
+    }
+
+    .form-fields {
+      gap: 0.75rem;
     }
   }
 }

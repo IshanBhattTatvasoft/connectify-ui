@@ -50,6 +50,7 @@ export default function Textbox({
             ),
           }),
         }}
+        InputLabelProps={{ shrink: true }}
         // ---- STYLING ----
         sx={{
           // container
