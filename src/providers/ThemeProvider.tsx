@@ -1,6 +1,8 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
+import createEmotionCache from "@/createEmotionCache";
+import { CacheProvider } from "@emotion/react";
 
 type Theme = "light" | "dark";
 type ThemeContextType = {
@@ -15,6 +17,7 @@ const ThemeContext = createContext<ThemeContextType>({
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [theme, setTheme] = useState<Theme>("light");
+  const clientSideEmotionCache = createEmotionCache();
 
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme") as Theme | null;
@@ -34,9 +37,11 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
+    <CacheProvider value={clientSideEmotionCache}>
+      <ThemeContext.Provider value={{ theme, toggleTheme }}>
+        {children}
+      </ThemeContext.Provider>
+    </CacheProvider>
   );
 };
 

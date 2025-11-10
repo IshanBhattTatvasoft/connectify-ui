@@ -1,10 +1,13 @@
 // lib/validation.ts
 import * as yup from "yup";
+import { Common } from "../constants";
 
 export const loginSchema = yup.object({
-  email: yup
+   email: yup
     .string()
-    .email("Enter a valid email")
+    .email("Invalid email")
+    .matches(Common.RegularExpression.EmailRegularExp, "Invalid email")
+    .max(50, "Email cannot exceed than 50 characters")
     .required("Email is required"),
   password: yup
     .string()
@@ -12,14 +15,12 @@ export const loginSchema = yup.object({
     .required("Password is required"),
 });
 
-export const signupSchema = yup.object({
-  name: yup
-    .string()
-    .min(2, "Name must be at least 2 characters")
-    .required("Name is required"),
+export const SignupSchema = yup.object().shape({
   email: yup
     .string()
-    .email("Enter a valid email")
+    .email("Invalid email")
+    .matches(Common.RegularExpression.EmailRegularExp, "Invalid email")
+    .max(50, "Email cannot exceed than 50 characters")
     .required("Email is required"),
   password: yup
     .string()
@@ -28,5 +29,14 @@ export const signupSchema = yup.object({
   confirmPassword: yup
     .string()
     .oneOf([yup.ref("password")], "Passwords must match")
-    .required("Confirm password is required"),
+    .required("Please confirm your password"),
+});
+
+export const forgotPasswordValidationSchema = yup.object().shape({
+  email: yup
+    .string()
+    .email("Invalid email")
+    .matches(Common.RegularExpression.EmailRegularExp, "Invalid email")
+    .max(50, "Email cannot exceed than 50 characters")
+    .required("Email is required"),
 });

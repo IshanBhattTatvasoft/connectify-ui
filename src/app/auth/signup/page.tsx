@@ -9,23 +9,15 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { GoogleLogin } from "@react-oauth/google";
 import { toast } from "react-toastify";
-import { AuthService } from "@/services/auth.service";
+import { Signup } from "@/services/auth.service";
+import { SignupSchema } from "@/utils/validation/auth";
+import { handleGoogleSignup } from "@/utils/helper";
+import { useRouter } from "next/navigation";
 
-// ✅ Validation Schema
-const SignupSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Email is required"),
-  password: Yup.string()
-    .min(6, "Password must be at least 6 characters")
-    .required("Password is required"),
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref("password")], "Passwords must match")
-    .required("Please confirm your password"),
-});
-
-export default function Signup() {
+export default function SignupPage() {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
-  // ✅ Formik setup
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -36,7 +28,7 @@ export default function Signup() {
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       setLoading(true);
       try {
-        const res = await AuthService.signup({
+        const res = await Signup({
           email: values.email,
           password: values.password,
         });
@@ -44,6 +36,7 @@ export default function Signup() {
         toast.success("Signup successful!");
         console.log("Signup success:", res);
         resetForm();
+        router.push("/welcome");
       } catch (err: any) {
         console.error("Signup error:", err);
         toast.error(err.response?.data?.message || "Something went wrong!");
@@ -54,26 +47,7 @@ export default function Signup() {
     },
   });
 
-  // ✅ Google signup
-  const handleGoogleSignup = async (credentialResponse: any) => {
-    try {
-      const id_token = credentialResponse?.credential;
-      if (!id_token) {
-        toast.error("Google sign-in failed");
-        return;
-      }
-
-      const res = await AuthService.signup({ id_token });
-      toast.success("Google signup successful!");
-      console.log("Google signup success:", res);
-
-      // optional: store tokens
-      // localStorage.setItem("access_token", res.access_token);
-    } catch (err: any) {
-      console.error(err);
-      toast.error(err.response?.data?.message || "Google signup failed!");
-    }
-  };
+  
 
   return (
     <Box className="signup-container">
@@ -100,7 +74,7 @@ export default function Signup() {
 
         <Typography variant="body2" className="form-subtitle">
           Already have an account?{" "}
-          <Link href="/login" className="login-link">
+          <Link href="/auth/login" className="login-link">
             Login here
           </Link>
         </Typography>

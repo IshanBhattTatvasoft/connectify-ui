@@ -5,6 +5,7 @@ import { Lexend } from "next/font/google";
 import Providers from "./Provider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Script from "next/script";
 
 const lexend = Lexend({
   subsets: ["latin"],
@@ -28,6 +29,10 @@ export default function RootLayout({
       <body className={lexend.className}>
         <Providers>
           {children}
+          <Script
+            src="https://accounts.google.com/gsi/client"
+            strategy="afterInteractive"
+          />
           <ToastContainer position="bottom-right" />
         </Providers>
       </body>

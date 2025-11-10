@@ -106,6 +106,12 @@
       }
     }
 
+    .forgot-password {
+      text-align: right;
+      margin-top: -0.3rem;
+      margin-bottom: 0.5rem;
+    }
+
     .divider {
       font-size: 0.875rem;
       display: flex;
@@ -211,4 +217,10 @@
       gap: 0.75rem;
     }
   }
+}
+
+
+// -------------------------------------------- OTP SCSS Starts --------------------------------------------
+.otp-input-container {
+    margin-bottom: 20px;
 }
